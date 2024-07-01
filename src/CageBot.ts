@@ -431,19 +431,33 @@ export class CageBot {
         );
         const processedMsg = message.msg.toLowerCase();
 
-        if (processedMsg.startsWith("cage")) {
+     if (processedMsg.startsWith("cage")) {
           await this.runBlockingRequest(message, () => this._cageHandler.becomeCaged(message, false));
-        } else if ((processedMsg.startsWith("speedrun")) || (processedMsg.startsWith("!speedrun"))) {
+        } else if (processedMsg.startsWith("speedrun")){
           await this.runBlockingRequest(message, () => this._cageHandler.becomeCaged(message, true));
-        } else if ((processedMsg.startsWith("release")) || (processedMsg.startsWith("!release"))) {
+        } else if (processedMsg.startsWith("release")){
           await this.runBlockingRequest(message, () => this._uncageHandler.releaseCage(message));
-        } else if ((processedMsg.startsWith("escape")) || (processedMsg.startsWith("!escape"))) {
+        } else if (processedMsg.startsWith("escape")){
           await this.runBlockingRequest(message, () => this._uncageHandler.escapeCage(message));
-        } else if ((processedMsg.startsWith("status")) || (processedMsg.startsWith("!status"))) {
+        } else if (processedMsg.startsWith("status")){
           await this.sendStatus(message, true);
-        } else if )(processedMsg.startsWith("diet")) ||(processedMsg.startsWith("!diet"))) {
+        } else if (processedMsg.startsWith("diet")){
           await this._diet.sendDiet(message);
-        } else if !(processedMsg.startsWith("help")) ||(processedMsg.startsWith("!help"))) {
+        } else if (processedMsg.startsWith("help")){
+          await this.sendHelp(message);
+        } else if (processedMsg.startsWith("!cage")) {
+          await this.runBlockingRequest(message, () => this._cageHandler.becomeCaged(message, false));
+        } else if processedMsg.startsWith("!speedrun"){
+          await this.runBlockingRequest(message, () => this._cageHandler.becomeCaged(message, true));
+        } else if processedMsg.startsWith("!release"){
+          await this.runBlockingRequest(message, () => this._uncageHandler.releaseCage(message));
+        } else if processedMsg.startsWith("!escape"){
+          await this.runBlockingRequest(message, () => this._uncageHandler.escapeCage(message));
+        } else if processedMsg.startsWith("!status"){
+          await this.sendStatus(message, true);
+        } else if processedMsg.startsWith("!diet") {
+          await this._diet.sendDiet(message);
+        } else if processedMsg.startsWith("!help") {
           await this.sendHelp(message);
         } else {
           await this.didntUnderstand(message);
